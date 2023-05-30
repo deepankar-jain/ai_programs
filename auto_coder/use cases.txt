@@ -1,0 +1,19 @@
+Create a python script which generates 30  numbers starting from 0 and varying randomly by up to 5 in each iteration.
+then plot this with a realtime plot
+sleep 0.1 second between updates
+done
+
+
+
+import re
+content= '''```python\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport time\n\n# Create an empty list to store the generated numbers\ndata = []\n\n# Generate 30 random numbers\nfor i in range(30):\n    
+# Add a random number, up to 5, to the previous number\n    if i == 0:\n        
+num = np.random.randint(0, 6)\n    else:\n        num = data[i-1] + np.random.randint(-5, 6)\n        
+if num < 0:\n            num = 0\n    data.append(num)\n\n# Create a realtime plot\nplt.ion()\nfigure, 
+ax = plt.subplots()\nx_data = range(len(data))\nline, = ax.plot(x_data, data)\nax.set_ylim([0, 30])\n\n
+# Update the plot every 0.1 seconds\nfor i in range(len(data)):\n    line.set_ydata(data[:i+1])\n    
+plt.draw()\n    plt.pause(0.1)\n```'''
+
+
+test = re.sub(r"```python", "", content)
+print(test)
